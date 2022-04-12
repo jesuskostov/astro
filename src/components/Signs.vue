@@ -113,7 +113,7 @@ export default {
     transform: rotate(0deg) scale(1.1);
   }
   to {
-    transform: rotate(-360deg) scale(1.1);
+    transform: rotate(360deg) scale(1.1);
   }
 }
 
