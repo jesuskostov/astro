@@ -1,64 +1,70 @@
 <template>
   <div class="sign-wrapper">
     <div class="choosed-sign">
-      <div v-for="(sign, i) in signs" :key="i" @click="chooseSign(sign)" class="sign" :class="['sign-' + (i + 1), {'active': sign === choosedSign}]">
+      <div
+        v-for="(sign, i) in signs"
+        :key="i"
+        @click="chooseSign(sign)"
+        class="sign"
+        :class="['sign-' + (i + 1), { active: sign === choosedSign }]"
+      >
         <Icon :icon="sign" />
       </div>
       <Icon :icon="choosedSign" />
       <span v-if="animation" class="animation"></span>
     </div>
     <!-- <span class="line" :style="`transform: translateX(50%) rotate(${degree}deg)`"></span> -->
-    <img class="circle-1" src="../assets/circle-1.svg" alt="">
-    <img class="circle-2" src="../assets/circle-2.svg" alt="">
-    <img class="circle-3" src="../assets/circle-3.svg" alt="">
+    <img class="circle-1" src="../assets/circle-1.svg" alt="" />
+    <img class="circle-2" src="../assets/circle-2.svg" alt="" />
+    <img class="circle-3" src="../assets/circle-3.svg" alt="" />
   </div>
 </template>
 
 <script>
-import Icon from '../components/Icon.vue'
+import Icon from "../components/Icon.vue";
 
 export default {
-  name: 'Signs',
+  name: "Signs",
   data() {
     return {
       signs: null,
-      choosedSign: 'aquarius',
-      animation: true
+      choosedSign: "aquarius",
+      animation: true,
       // degree: -90
-    }
+    };
   },
   components: {
-    Icon
+    Icon,
   },
   methods: {
     chooseSign(sign) {
-      this.choosedSign = sign
-    }
+      this.choosedSign = sign;
+    },
   },
   watch: {
     choosedSign() {
-      this.animation = false
+      this.animation = false;
       setTimeout(() => {
-        this.animation = true
-      }, 10)
-      let sign = this.choosedSign
-      this.$store.dispatch('setSign', sign)
+        this.animation = true;
+      }, 10);
+      let sign = this.choosedSign;
+      this.$store.dispatch("setSign", sign);
       // let i = this.signs.findIndex(sign => sign == this.choosedSign)
       // this.degree = -90 + (i * 30)
       // console.log(i);
       // console.log(this.degree);
-    }
+    },
   },
   mounted() {
-    this.signs = this.$store.state.signs
-  }
-}
+    this.signs = this.$store.state.signs;
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-
 .sign-wrapper {
+  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,7 +131,7 @@ export default {
   width: 72px;
   height: 72px;
   border-radius: 9999px;
-  background-color: #EF974D;
+  background-color: #ef974d;
   z-index: 2;
   svg {
     position: relative;
@@ -140,7 +146,7 @@ export default {
   position: absolute;
   width: 72px;
   height: 72px;
-  background-color: #EF974D;
+  background-color: #ef974d;
   border-radius: 9999px;
   z-index: -1;
   animation: load 1s ease;
@@ -148,23 +154,23 @@ export default {
 }
 
 @keyframes load {
-	0% {
+  0% {
     background: rgba(123, 91, 232, 0.35);
     transform: scale(1);
     // border: 0px solid rgba(123, 91, 232, 0.35);
-	}
-	100% {
+  }
+  100% {
     background: rgb(123, 91, 232);
     transform: scale(2);
     opacity: 0;
     // border: 70px solid rgba(123, 91, 232, 0.35);
-	}
+  }
 }
 
 .line {
   width: 90px;
   height: 2px;
-  background-color: #EF974D;
+  background-color: #ef974d;
   position: absolute;
   transform-origin: 0% 0%;
   transition: 1s;
@@ -183,14 +189,14 @@ export default {
   background-color: rgba(123, 91, 232, 0.25);
   border: 1px solid transparent;
   &.active {
-    border: 0.06rem dashed #EF974D;
+    border: 0.06rem dashed #ef974d;
   }
   svg {
     position: relative;
     top: 3px;
     width: 36px;
     height: 36px;
-    fill: #7B5BE8;
+    fill: #7b5be8;
   }
 }
 
