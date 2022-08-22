@@ -55,7 +55,7 @@ export default {
   position: fixed;
   width: 100%;
   margin: 0;
-  bottom: 20px;
+  bottom: 40px;
   color: #fff;
   font-size: 42px;
   opacity: 0.2;
